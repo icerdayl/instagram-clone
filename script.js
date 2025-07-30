@@ -1,15 +1,24 @@
 let addBtn = document.getElementById("add-btn")
 let popUp = document.getElementById("popup")
+let popupBg = document.getElementById("popup-bg")
 let closeBtn = document.getElementById("close")
 let mainPage = document.getElementById("container")
 
 
 closeBtn.addEventListener("click", function(){
     popUp.style.display = "none"
+    popupBg.style.display = "none"
 })
 
 addBtn.addEventListener("click", function() {
     popUp.style.display = "block"
+    popupBg.style.display = "block"
+})
+
+// Close popup when clicking on backdrop
+popupBg.addEventListener("click", function() {
+    popUp.style.display = "none"
+    popupBg.style.display = "none"
 })
 
 let postContents = [
@@ -75,8 +84,8 @@ for (let i = 0; i < postContents.length; i++){
             <img src=" ${postContents[i].comm}">
             <img src=" ${postContents[i].send}">
         </div>
-        <div id="comment"
-            <p><b>${postContents[i].comments.name}</b>${postContents[i].comments.comment}</p>
+        <div id="comment">
+            <p><b>${postContents[i].comments.name}</b> ${postContents[i].comments.comment}</p>
             <p></p>
         </div>
     </div>
