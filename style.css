@@ -3,8 +3,6 @@ body{
     text-align: center;
     margin-left: 400px;
     margin-right: 400px;
-
-    justify-content: center;
 }
 
 /* HEADER */
@@ -184,15 +182,11 @@ header{
 
 #popup{
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     background:linear-gradient( #feda75 15%, #fa7e1e 40%, #d62976 60%, #962fbf 75%, #4f5bd5 100%) ;
     border: 5px black solid;
     padding: 10px 25px 25px 25px;
     text-align: start;
     display: none;
-    z-index: 1000;
     width: 500px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     font-family: "Roboto", sans-serif;
