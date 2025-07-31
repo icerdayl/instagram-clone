@@ -2,8 +2,6 @@ let addBtn = document.getElementById("add-btn")
 let popUp = document.getElementById("popup")
 let closeBtn = document.getElementById("close")
 let mainPage = document.getElementById("container")
-
-// For popup
 let popupBg = document.getElementById("popup-bg")
 let nameUrl = document.getElementById("username-url")
 let imgUrl = document.getElementById("img-url")
@@ -30,44 +28,44 @@ let postContents = [
     {
         id: "1",
         name: "icerdayl",
-        place: "Alabama",
-        icon: "Screenshot (1).png",
+        place: "Biringan",
+        icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8PwVDYeWI90zcxf5a8P7wwFHfGd384tRWjQ&s",
         img:"https://plus.unsplash.com/premium_photo-1676422290431-f0d07a64eec5?q=80&w=482&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         likes: "https://cdn-icons-png.flaticon.com/128/1077/1077035.png",
         comm: "https://cdn-icons-png.flaticon.com/128/1947/1947247.png",
         send:"https://cdn-icons-png.flaticon.com/128/3024/3024593.png",
         comments:{
-            name: "Lebron James",
-            comment: "Ugh"
+            name: "Gusion Montefalco",
+            comment: "Lesgoooo"
         }
     },
     {
         id: "2",
         name: "ahiezer",
         place: "Alabama",
-        icon: "Screenshot (1).png",
+        icon: "https://thehowler.org/wp-content/uploads/2018/01/roll-safe-meme-1.jpg",
         img:"https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTkzeWloc3J6eGNvaTl2cmVoOWEzenZka2dhMTYydTBxandvc3VkbyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3o7aTnQqygA3TcukFi/200.webp",
         likes: "https://cdn-icons-png.flaticon.com/128/1077/1077035.png",
         comm: "https://cdn-icons-png.flaticon.com/128/1947/1947247.png",
         send:"https://cdn-icons-png.flaticon.com/128/3024/3024593.png",
         comments:{
-            name: "Lebron James",
-            comment: "Ugh"
+            name: "H2WO",
+            comment: "i miss you tho"
         }
     },
 
     {
         id: "3",
         name: "icer",
-        place: "Alabama",
-        icon: "Screenshot (1).png",
+        place: "Bambang",
+        icon: "https://miro.medium.com/v2/resize:fit:1400/1*GI-td9gs8D5OKZd19mAOqA.png",
         img:"https://media3.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3M2ZyeGdsODV2dzY0ZHFqaXJ1ZzRjYmVuOHJzZnlhMnVwY2F1anEyOSZlcD12MV9naWZzX3RyZW5kaW5nJmN0PWc/h3WH1rqyW2bmfOVqSi/giphy.webp",
         likes: "https://cdn-icons-png.flaticon.com/128/1077/1077035.png",
         comm: "https://cdn-icons-png.flaticon.com/128/1947/1947247.png",
         send:"https://cdn-icons-png.flaticon.com/128/3024/3024593.png",
         comments:{
             name: "Lebron James",
-            comment: "Ugh"
+            comment: "Fireeee"
         }
     },
 ]
@@ -75,38 +73,30 @@ let postContents = [
 const mainPageLocalStorage = JSON.parse(localStorage.getItem("postContents"))
 if (mainPageLocalStorage){
     postContents = mainPageLocalStorage 
-
 }
 
 submitBtn.addEventListener("click", function(){
-    if(nameUrl && imgUrl && address && profileIcon){
-        let addPost={
-            name: nameUrl.value,
-            place: address.value,
-            icon: profileIcon.value,
-            img:imgUrl.value,
-            likes: "https://cdn-icons-png.flaticon.com/128/1077/1077035.png",
-            comm: "https://cdn-icons-png.flaticon.com/128/1947/1947247.png",
-            send:"https://cdn-icons-png.flaticon.com/128/3024/3024593.png",
-            comments:{
-                name: "Lebron James",
-                comment: "Ugh"
-            }
-        }    
-        mainPage.textContent+=postContents.unshift(addPost)
-        renderPost()
-        nameUrl.value = ""
-        imgUrl.value = ""
-        address.value = ""
-        profileIcon.value=""
-        localStorage.setItem("Posts", postContents)
-    }
-    else{
-        alert("please fill up all the blanks")
-        false
-    }
-    
-    
+    let addPost={
+        id: postContents.length + 1,
+        name: nameUrl.value,
+        place: address.value,
+        icon: profileIcon.value,
+        img:imgUrl.value,
+        likes: "https://cdn-icons-png.flaticon.com/128/1077/1077035.png",
+        comm: "https://cdn-icons-png.flaticon.com/128/1947/1947247.png",
+        send:"https://cdn-icons-png.flaticon.com/128/3024/3024593.png",
+        comments:{
+            name: "Lebron James",
+            comment: "Ugh"
+        }
+    }    
+    mainPage.textContent+=postContents.unshift(addPost)
+    renderPost()
+    nameUrl.value = ""
+    imgUrl.value = ""
+    address.value = ""
+    profileIcon.value=""
+    localStorage.setItem("Posts", postContents)
 })
 
 function renderPost(){   
@@ -124,7 +114,7 @@ function renderPost(){
                 </div>
             </div>
             <div>
-                <button onclick="deleteBtn()" id="delete-btn">Delete Post</button>
+                <button onclick="deleteBtn(${postContents[i].id})" id="delete-btn">Delete Post</button>
             </div>
         </div>
         <div id="post-img">
@@ -152,4 +142,13 @@ function renderPost(){
 }
 renderPost()
 
+function deleteBtn(id){
+    const filteredArray = postContents.filter((post)=> post.id != id)
+    postContents = filteredArray
+    renderPost()
+}
 
+function reset(){
+    localStorage.clear()
+    window.location.reload()
+}

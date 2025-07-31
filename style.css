@@ -3,19 +3,21 @@ body{
     text-align: center;
     margin-left: 400px;
     margin-right: 400px;
-    /* border: solid 1px black; */
+
+    justify-content: center;
 }
-/* Header */
+
+/* HEADER */
 h2{
     font-family: "Niconne", cursive;
     font-weight: 400;
     font-style: normal;
    
 }
+
 header{
     text-align: end;
     display: flex;
-    justify-content: space-between;
     padding: 10px 191px;
     background-color: white;
     position: fixed;
@@ -24,6 +26,7 @@ header{
     margin-left: -150px;
     top: 0%;
 }
+
 #icons{
     margin-top: auto;
     margin-bottom: auto;
@@ -40,6 +43,22 @@ header{
     font-weight: bold;
     font-size: 30px;
     background:linear-gradient( #feda75 15%, #fa7e1e 40%, #d62976 60%, #962fbf 75%, #4f5bd5 100%) ;
+}
+
+#reset{
+    background:linear-gradient( #feda75 15%, #fa7e1e 40%, #d62976 60%, #962fbf 75%, #4f5bd5 100%) ;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    border: none;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#reset:hover{
+    border: solid 2px black;
 }
 
 #add-btn:hover{
@@ -62,14 +81,14 @@ header{
     font-optical-sizing: auto;
     font-weight: normal;
 }
+
+/* Post Head */
 .head{
     display: flex;
     align-items: center;
     gap: 10px;
 }
-#pics{
-    border-radius: 12px;
-}
+
 .profile{
     border-radius: 100%;
     width: 35px;
@@ -84,6 +103,7 @@ header{
 }
 #post-head p{
     text-align: left;
+
 }
 
 #p1{
@@ -94,8 +114,6 @@ header{
     color: rgb(107, 107, 107);
 }
 #post-head button{
-    align-items: start;
-    justify-content: space-between;
     margin-left: 245px;
     padding: 10px 20px;
     font-weight: bold;
@@ -107,6 +125,19 @@ header{
     cursor: pointer;
 
 }
+#post-head button:hover{
+    border: solid 2px black;
+}
+
+/* Post Image */
+
+#pics{
+    border-radius: 12px;
+    max-width: 482px;
+    max-height: 580px;
+}
+
+/* Post Foot */
 
 #post-foot{
     border-bottom: solid 1px rgb(197, 197, 197);
