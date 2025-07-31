@@ -28,6 +28,7 @@ popupBg.addEventListener("click", function() {
 
 let postContents = [
     {
+        id: "1",
         name: "icerdayl",
         place: "Alabama",
         icon: "Screenshot (1).png",
@@ -41,10 +42,11 @@ let postContents = [
         }
     },
     {
+        id: "2",
         name: "ahiezer",
         place: "Alabama",
         icon: "Screenshot (1).png",
-        img:"https://plus.unsplash.com/premium_photo-1676422290431-f0d07a64eec5?q=80&w=482&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        img:"https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTkzeWloc3J6eGNvaTl2cmVoOWEzenZka2dhMTYydTBxandvc3VkbyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3o7aTnQqygA3TcukFi/200.webp",
         likes: "https://cdn-icons-png.flaticon.com/128/1077/1077035.png",
         comm: "https://cdn-icons-png.flaticon.com/128/1947/1947247.png",
         send:"https://cdn-icons-png.flaticon.com/128/3024/3024593.png",
@@ -55,10 +57,11 @@ let postContents = [
     },
 
     {
+        id: "3",
         name: "icer",
         place: "Alabama",
         icon: "Screenshot (1).png",
-        img:"https://plus.unsplash.com/premium_photo-1676422290431-f0d07a64eec5?q=80&w=482&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        img:"https://media3.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3M2ZyeGdsODV2dzY0ZHFqaXJ1ZzRjYmVuOHJzZnlhMnVwY2F1anEyOSZlcD12MV9naWZzX3RyZW5kaW5nJmN0PWc/h3WH1rqyW2bmfOVqSi/giphy.webp",
         likes: "https://cdn-icons-png.flaticon.com/128/1077/1077035.png",
         comm: "https://cdn-icons-png.flaticon.com/128/1947/1947247.png",
         send:"https://cdn-icons-png.flaticon.com/128/3024/3024593.png",
@@ -70,6 +73,10 @@ let postContents = [
 ]
 
 const mainPageLocalStorage = JSON.parse(localStorage.getItem("postContents"))
+if (mainPageLocalStorage){
+    postContents = mainPageLocalStorage 
+
+}
 
 submitBtn.addEventListener("click", function(){
     if(nameUrl && imgUrl && address && profileIcon){
@@ -88,7 +95,6 @@ submitBtn.addEventListener("click", function(){
         }    
         mainPage.textContent+=postContents.unshift(addPost)
         renderPost()
-
         nameUrl.value = ""
         imgUrl.value = ""
         address.value = ""
@@ -99,21 +105,12 @@ submitBtn.addEventListener("click", function(){
         alert("please fill up all the blanks")
         false
     }
+    
+    
 })
-
-if (mainPageLocalStorage){
-    postContents = mainPageLocalStorage
-    renderPost()
-}
-
-if(mainPageLocalStorage){
-    mainPage = mainPageLocalStorage
-    renderPost(mainPageLocalStorage)
-}
 
 function renderPost(){   
     mainPage.innerHTML=""
-    localStorage.setItem("mainPage", JSON.stringify(mainPage))
     for (let i = 0; i < postContents.length; i++){
         mainPage.innerHTML += `
         <div id="post-head">
@@ -127,7 +124,7 @@ function renderPost(){
                 </div>
             </div>
             <div>
-                <button onclick="deleteBtn(${postContents[i].id})" id="delete-btn">Delete Post</button>
+                <button onclick="deleteBtn()" id="delete-btn">Delete Post</button>
             </div>
         </div>
         <div id="post-img">
@@ -142,19 +139,17 @@ function renderPost(){
             <div id="comment">
                 <p><b>${postContents[i].comments.name}</b> ${postContents[i].comments.comment}</p>
                 <div>
-                    <input type="text" placeholder="Enter your comments">
+                    <input type="text" id="comm-input" placeholder="Enter your comments">
+                    
                 </div>
             </div>
         </div>
         `
-    } 
+
+        } 
+
+        localStorage.setItem("postContents", JSON.stringify(postContents))
 }
 renderPost()
-
-
-// function deleteBtn(){
-//     postContents.(postContents)
-//     renderPost()
-// }
 
 

@@ -41,6 +41,10 @@ header{
     font-size: 30px;
     background:linear-gradient( #feda75 15%, #fa7e1e 40%, #d62976 60%, #962fbf 75%, #4f5bd5 100%) ;
 }
+
+#add-btn:hover{
+    border: 2px solid black;
+}
 #profile{
     border-radius: 50%;
     width: 35px;
@@ -163,13 +167,13 @@ header{
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: bold;
-    
+    border-radius: 10px;
 }
 
 #popup p{
-    color: white;
-    text-shadow: black 0px 1px 0px;
+    color: rgb(0, 0, 0);
 }
+
 input{
     width: 500px;
 }
@@ -200,6 +204,10 @@ input{
     font-optical-sizing: auto;
     font-weight: bold;
     cursor: pointer;
+}
+
+#submit:hover{
+    border: 2px solid black;
 }
 
 #popup input{
