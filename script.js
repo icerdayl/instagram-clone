@@ -96,6 +96,8 @@ submitBtn.addEventListener("click", function(){
     imgUrl.value = ""
     address.value = ""
     profileIcon.value=""
+    popUp.style.display="none"
+    popupBg.style.display="none"
     localStorage.setItem("Posts", postContents)
 })
 
